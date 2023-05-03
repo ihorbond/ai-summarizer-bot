@@ -85,6 +85,12 @@ bot.command("tldr", async (ctx) => {
   ctx.reply(response);
 });
 
+bot.command("showMessages", async (ctx) => {
+  const chatId = ctx.update.message.chat.id.toString();
+  const response = chats.get(chatId)?.messages?.join("/n") ?? "";
+  ctx.reply(response);
+});
+
 bot.on("text", (ctx) => {
   const { message } = ctx.update;
   const {
