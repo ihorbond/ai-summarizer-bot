@@ -82,12 +82,12 @@ bot.command("tldr", async (ctx) => {
   const chatId = ctx.update.message.chat.id.toString();
   const response = await tldr(chatId);
   //   console.log(response);
-  ctx.reply(response);
+  ctx.reply(response ?? "No response from ChatGPT");
 });
 
 bot.command("showMessages", (ctx) => {
   const chatId = ctx.update.message.chat.id.toString();
-  const response = chats.get(chatId)?.messages?.join("/n") ?? "No messages";
+  const response = chats.get(chatId)?.messages?.join("\n") ?? "No messages";
   console.log("showMessages", response);
   ctx.reply(response);
 });
