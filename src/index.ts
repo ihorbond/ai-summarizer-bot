@@ -85,9 +85,10 @@ bot.command("tldr", async (ctx) => {
   ctx.reply(response);
 });
 
-bot.command("showMessages", async (ctx) => {
+bot.command("showMessages", (ctx) => {
   const chatId = ctx.update.message.chat.id.toString();
-  const response = chats.get(chatId)?.messages?.join("/n") ?? "";
+  const response = chats.get(chatId)?.messages?.join("/n") ?? "No messages";
+  console.log("showMessages", response);
   ctx.reply(response);
 });
 
