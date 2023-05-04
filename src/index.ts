@@ -65,8 +65,8 @@ try {
       .map((msg) => {
         const { from: msgAuthor, text, repliedTo } = msg;
         const { firstName: recepient } = repliedTo;
-        return `${msgAuthor} ${
-          recepient ? `replied to ${recepient}` : ""
+        return `${msgAuthor}${
+          recepient ? ` replied to ${recepient}` : ""
         }: ${text}`;
       })
       .join(separator);
@@ -87,7 +87,7 @@ try {
   bot.command("tldr", async (ctx) => {
     const chatId = ctx.update.message.chat.id.toString();
     const response = await tldr(chatId);
-    //   console.log(response);
+    console.log(response);
     ctx.reply(response || "No response from ChatGPT");
   });
 
